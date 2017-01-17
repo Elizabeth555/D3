@@ -6,47 +6,40 @@
         <script type="text/javascript" src="d3.js"></script>
 
         <style type="text/css">
-          div.bar {
-            display: inline-block;
-            width: 20px;
-            height: 75px;
-            margin-right: 2px;
-            background-color: pink;
-          }
-          .pumpkin {
-            fill: yellow;
-            stroke: orange;
-            stroke-width: 5;
-          }
+
 
         </style>
     </head>
+
     <body>
-        <script type="text/javascript">
+      <script type="text/javascript">
 
-        var dataset = [];
+        var w = 500;
+        var h = 50;
+        var dataset = [5,10,15,20,25]
 
-        for (var i=0; i <25; i++){
-          var newNumber = Math.round(Math.random() * 30);
-          dataset.push(newNumber);
-        }
+      var svg =  d3.select("body")
+          .append("svg")
+          .attr("width", w)
+          .attr("height", h);
 
-        d3.select("body").selectAll("div")
-          .data(dataset)
-          .enter()
-          .append("div")
-          .attr("class", "bar")
-          .style("height", function(d){
-            var barHeight = d * 5;
-            return barHeight + "px";
+        var circles = svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle");
+
+        circles.attr("cx", function(d,i){
+            return (i * 50) + 25;
           })
+          .attr("cy", h/2)
+          .attr("r", function(d){
+            return d;
+          });
 
-        </script>
+      </script>
 
 
     </body>
 
-    <svg width="500" height="50">
-      <circle cx="25" cy="25" r="22" class="pumpkin"/>
-    </svg>
+
 </html>
