@@ -13,11 +13,6 @@
             margin-right: 2px;
             background-color: pink;
           }
-          .pumpkin {
-            fill: yellow;
-            stroke: orange;
-            stroke-width: 5;
-          }
 
         </style>
     </head>
@@ -27,7 +22,7 @@
         var dataset = [];
 
         for (var i=0; i <25; i++){
-          var newNumber = Math.round(Math.random() * 30);
+          var newNumber = Math.random() * 30;
           dataset.push(newNumber);
         }
 
@@ -42,11 +37,5 @@
           })
 
         </script>
-
-
     </body>
-
-    <svg width="500" height="50">
-      <circle cx="25" cy="25" r="22" class="pumpkin"/>
-    </svg>
 </html>
