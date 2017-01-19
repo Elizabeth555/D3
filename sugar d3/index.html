@@ -8,9 +8,42 @@
     <body>
         <script type="text/javascript">
 
-        d3.csv("data.csv", function(data) {
-          console.log(data)
-        })
+        var w = 500;
+        var h = 100;
+        var barPadding = 1;
+        var svg = d3.select("body")
+                     .append("svg")
+                     .attr("width", w)
+                     .attr("height", h);
+
+      d3.csv("data.csv", function(dataset) {
+
+          dataset.forEach(function(d){
+            Drink = d.Drink,
+            d["teaspoons"] = +d[25]
+            console.log(d)
+          });
+
+
+        svg.selectAll("rect")
+           .data(dataset)
+           .enter()
+           .append("rect")
+           .attr("x", function (d, i) {
+             return i * ( w / dataset.length);
+            })
+           .attr("y", function(d) {
+             return h - d["teaspoons"]
+           })
+           .attr("width", w / dataset.length - barPadding)
+           .attr("height", function(d) {
+             return (d["teaspoons"] * 10);
+
+           })
+           .attr("fill", "red")
+
+        });
+
 
         </script>
     </body>
