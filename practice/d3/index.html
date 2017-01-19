@@ -34,6 +34,11 @@
           .attr("cy", h/2)
           .attr("r", function(d){
             return d;
+          })
+          .attr('fill', function(d){
+            if(d>15) {
+              return "red";
+            }
           });
 
       </script>
